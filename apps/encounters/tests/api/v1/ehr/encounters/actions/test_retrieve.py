@@ -18,11 +18,13 @@ def test_response(as_practitioner, assert_dt, encounter, faker, url, utc):  # no
     assert response["id"] == encounter.id
     assert response["practitioner"] == encounter.practitioner_id
     assert response["status"] == encounter.status
+    assert_dt(response["createdAt"], encounter.created_at)
     assert_dt(response["endedAt"], encounter.ended_at)
     assert_dt(response["startedAt"], encounter.started_at)
 
     assert set(response) == {
         "id",
+        "createdAt",
         "endedAt",
         "location",
         "patient",

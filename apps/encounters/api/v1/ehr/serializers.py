@@ -26,6 +26,7 @@ class EncounterReadSerializer(serializers.ModelSerializer):
     class Meta:
         fields = (
             "id",
+            "created_at",
             "ended_at",
             "location",
             "patient",

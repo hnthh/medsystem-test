@@ -8,6 +8,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 
     "corsheaders",
+    "django_filters",
     "phonenumber_field",
     "rest_framework",
     "rest_framework.authtoken",
