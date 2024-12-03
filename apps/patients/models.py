@@ -10,7 +10,6 @@ class Patient(FullNameModel, TimestampedModel):
         related_name="as_patient",
         unique=True,
     )
-
     email = models.EmailField(db_index=True, null=False, unique=True)
     phone = PhoneNumberField(db_index=True, null=False, unique=True)
 
