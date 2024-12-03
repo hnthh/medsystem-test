@@ -2,7 +2,6 @@ import pytest
 
 pytestmark = pytest.mark.django_db
 
-
 url = "/api/v1/ehr/encounters/"
 
 
