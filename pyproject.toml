@@ -1,0 +1,100 @@
+[build-system]
+build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core"]
+
+[tool.poetry]
+authors = ["hnthh <anyaagarenko@gmail.com>"]
+description = ""
+name = "medsystem-test"
+readme = "README.md"
+version = "0.1.0"
+
+[tool.poetry.dependencies]
+django = "^5.0.4"
+django-cors-headers = "^4.3.1"
+django-environ = "^0.11.2"
+django-phonenumber-field = {extras = ["phonenumberslite"], version = "^7.3.0"}
+django-split-settings = "^1.3.0"
+djangorestframework = "^3.15.2"
+djangorestframework-camel-case = "^1.4.2"
+djangorestframework-simplejwt = "^5.3.1"
+drf-yasg = "^1.21.7"
+psycopg2-binary = "^2.9.9"
+python = "^3.11"
+pytz = "^2024.1"
+setuptools = "^69.2.0"
+
+[tool.poetry.group.dev.dependencies]
+freezegun = "^1.5.1"
+mixer = "^7.2.2"
+pytest-deadfixtures = "^2.2.1"
+pytest-django = "^4.8.0"
+pytest-freezegun = "^0.4.2"
+pytest-lazy-fixtures = "^1.0.7"
+pytest-mock = "^3.14.0"
+ruff = "^0.3.2"
+toml-sort = "^0.23.1"
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "core.settings"
+addopts = ["--no-migrations"]
+
+[tool.ruff]
+line-length = 160
+target-version = "py311"
+
+[tool.ruff.lint]
+ignore = [
+    "ANN001",  # missing type annotation for function argument `{}`
+    "ANN002",  # missing type annotation for `{}`
+    "ANN003",  # missing type annotation for `{}`
+    "ANN101",  # missing type annotation for `self` in method
+    "ANN102",  # missing type annotation for `cls` in classmethod
+    "ANN201",  # missing return type annotation for public function `{}`
+    "ANN202",  # missing return type annotation for private function `{}`
+    "ANN204",  # missing return type annotation for special method `{}`
+    "ANN205",  # missing return type annotation for staticmethod `{}`
+    "ANN206",  # missing return type annotation for class method `{}`
+    "ANN401",  # dynamically typed expressions (typing.Any) are disallowed in `{}`
+    "COM812",  # trailing comma missing
+    "D100",  # missing docstring in public module
+    "D101",  # missing docstring in public class
+    "D102",  # missing docstring in public method
+    "D103",  # missing docstring in public function
+    "D104",  # missing docstring in public package
+    "D105",  # missing docstring in magic method
+    "D106",  # missing docstring in public nested class
+    "D107",  # missing docstring in `__init__`
+    "D203",  # 1 blank line required before class docstring
+    "D205",  # 1 blank line required between summary line and description
+    "D213",  # multi-line docstring summary should start at the second line
+    "D415",  # first line should end with a period, question mark, or exclamation point
+    "FBT002",  # boolean default positional argument in function definition
+    "ISC001",  # implicitly concatenated string literals on one line
+    "RUF001",  # string contains ambiguous letter
+    "RUF012",  # mutable class attributes should be annotated with `typing.ClassVar`
+]
+select = ["ALL"]
+
+[tool.ruff.lint.flake8-tidy-imports]
+ban-relative-imports = "all"
+
+[tool.ruff.lint.isort]
+known-local-folder = ["apps", "core"]
+
+[tool.ruff.lint.per-file-ignores]
+"*/migrations/*" = [
+    "RUF012",  # mutable class attributes should be annotated with `typing.ClassVar`
+]
+"*/tests/*" = [
+    "INP001",  # add an `__init__.py`
+    "S101",  # use of `assert` detected
+]
+
+[tool.tomlsort]
+all = true
+in_place = true
+sort_first = ["tool.poetry"]
+spaces_before_inline_comment = 2
+spaces_indent_inline_array = 4
+trailing_comma_inline_array = true
